@@ -50,6 +50,7 @@ public class RankerOverlay {
 
 
     private float mZoom;
+    private float mBearing;
 
 
     private float mScale;
@@ -92,6 +93,7 @@ public class RankerOverlay {
      */
     public void addToMap() {
         mZoom = mAMap.getCameraPosition().zoom;
+        mBearing=mAMap.getCameraPosition().bearing;
         generateAll();
     }
     private void init(Context context) {
@@ -124,8 +126,9 @@ public class RankerOverlay {
      *
      * */
     public void onCameraChangeFinish(CameraPosition cameraPosition) {
-        if (mZoom != cameraPosition.zoom) {
+        if (mZoom != cameraPosition.zoom||mBearing!=cameraPosition.bearing) {
             mZoom = cameraPosition.zoom;
+
             generateAll();
         }
     }
