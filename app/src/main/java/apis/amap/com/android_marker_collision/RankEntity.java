@@ -30,7 +30,7 @@ public class RankEntity {
 
     private Bitmap mIcon;
 
-    private LatLng mPoition;
+    private LatLng mPosition;
 
     private Boundary mBoundary;
 
@@ -53,8 +53,8 @@ public class RankEntity {
     /**
      * 显示位置
      */
-    public void setPoition(LatLng mPoition) {
-        this.mPoition = mPoition;
+    public void setPosition(LatLng mPosition) {
+        this.mPosition = mPosition;
     }
 
     public String getTitle() {
@@ -86,8 +86,8 @@ public class RankEntity {
         return mType;
     }
 
-    public LatLng getPoition() {
-        return mPoition;
+    public LatLng getPosition() {
+        return mPosition;
     }
 
 

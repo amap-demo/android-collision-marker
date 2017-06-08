@@ -36,6 +36,7 @@ public class MainActivity extends Activity implements AMap.OnCameraChangeListene
         mAMap = mMapView.getMap();
 
 
+        mAMap.showMapText(false);
         mAMap.setOnCameraChangeListener(this);
 
 
@@ -94,7 +95,7 @@ public class MainActivity extends Activity implements AMap.OnCameraChangeListene
         for (int i = 0; i < 20; i++) {
 
             RankEntity rankEntity = new RankEntity();
-            rankEntity.setPoition(new LatLng(latlngs[i][1], latlngs[i][0]));
+            rankEntity.setPosition(new LatLng(latlngs[i][1], latlngs[i][0]));
 
 
             rankEntity.setTitle(titles[i]);
@@ -109,6 +110,7 @@ public class MainActivity extends Activity implements AMap.OnCameraChangeListene
         }
         mRankerOverlay = new RankerOverlay(this, mAMap, rankEntities);
         mRankerOverlay.addToMap();
+        mRankerOverlay.zoomToSpan();
 
     }
 

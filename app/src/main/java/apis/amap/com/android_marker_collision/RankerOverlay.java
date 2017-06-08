@@ -6,15 +6,19 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Point;
+import android.util.Log;
 import android.util.LruCache;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.amap.api.maps.AMap;
+import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.model.BitmapDescriptor;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.CameraPosition;
+import com.amap.api.maps.model.LatLng;
+import com.amap.api.maps.model.LatLngBounds;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 
@@ -98,6 +102,7 @@ public class RankerOverlay {
     }
     private void init(Context context) {
         mScale = context.getResources().getDisplayMetrics().density;
+        Log.i("MY","scale: "+ mScale);
         //根据字号以及想要的容差效果，可以调整boundary大小，目前为了效率以及效果，未使用精确的外边框
         mWidth = (int) (DEFAULT_WIDTH * mScale + 0.5) + 10;
         mHeight = (int) (DEFAULT_HEIGHT * mScale + 0.5);
@@ -204,7 +209,7 @@ public class RankerOverlay {
             } else {
                 MarkerOptions markerOptions = new MarkerOptions();
                 markerOptions.icon(bitmapDescriptor)
-                        .position(rankEntity.getPoition()).anchor(xAnchor, 0.5f);
+                        .position(rankEntity.getPosition()).anchor(xAnchor, 0.5f);
 
                 marker = mAMap.addMarker(markerOptions);
                 rankEntity.setMarker(marker);
@@ -228,7 +233,7 @@ public class RankerOverlay {
         Boundary rightBoundary = new Boundary();
         List<Boundary> mShowBoundaries = new ArrayList<Boundary>();
         for (RankEntity rankEntity : mRankEntities) {
-            Point point = mAMap.getProjection().toScreenLocation(rankEntity.getPoition());
+            Point point = mAMap.getProjection().toScreenLocation(rankEntity.getPosition());
             rightPoint.set(point.x + rankEntity.getIcon().getWidth(), point.y);
             leftPoint.set(point.x - rankEntity.getIcon().getWidth(), point.y);
             leftBoundary.initWithLeft(leftPoint, mWidth, mHeight);
@@ -274,5 +279,24 @@ public class RankerOverlay {
     }
 
 
+    public void zoomToSpan(){
+        if (mRankEntities != null && mRankEntities.size() > 0) {
+            if (mAMap == null)
+                return;
+            LatLngBounds bounds = getLatLngBounds(mRankEntities);
+            mAMap.moveCamera(CameraUpdateFactory.newLatLngBounds(bounds, 100));
+        }
+    }
+    /**
+     * 根据自定义内容获取缩放bounds
+     */
+    private LatLngBounds getLatLngBounds( List<RankEntity> RankEntitiesList) {
+        LatLngBounds.Builder b = LatLngBounds.builder();
+        for (int i = 0; i < RankEntitiesList.size(); i++) {
+            LatLng p = RankEntitiesList.get(i).getPosition();
+            b.include(p);
+        }
+        return b.build();
+    }
 
 }
