@@ -10,6 +10,9 @@ Marker碰撞处理
 ## 功能描述 ##
 基于3D地图SDK，显示Marker及标题，实现了地图缩放时当Marker或标题显示重叠，改变标题位置或隐藏标题。
 
+## 效果展示 ##
+![Screenshot]( https://github.com/amap-demo/android-location-circle/raw/master/apk/Screenshot.jpg )
+
 ## 扫一扫安装##
 ![Screenshot]( https://raw.githubusercontent.com/amap-demo/android-collision-marker/master/apk/download.png)  
 
