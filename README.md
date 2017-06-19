@@ -13,10 +13,10 @@ Marker碰撞处理
 ## 效果展示 ##
 ![Screenshot]( https://github.com/amap-demo/android-collision-marker/raw/master/apk/Screenshot.png )
 
-## 扫一扫安装##
+## 扫一扫安装 ##
 ![Screenshot]( https://raw.githubusercontent.com/amap-demo/android-collision-marker/master/apk/download.png)  
 
-## 使用方法##
-###1:配置搭建AndroidSDK工程###
+## 使用方法 ##
+### 1:配置搭建AndroidSDK工程 ###
 - [Android Studio工程搭建方法](http://lbs.amap.com/api/android-sdk/guide/create-project/android-studio-create-project).
 - [通过maven库引入SDK方法](http://lbs.amap.com/api/android-sdk/guide/create-project/android-studio-create-project#gradle_sdk).
