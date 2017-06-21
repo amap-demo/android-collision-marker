@@ -1,7 +1,7 @@
 # android-collision-marker
 Marker碰撞处理
 
-本工程为基于高德地图Android SDK进行封装，实现了定位轨迹记录并回放的功能
+本工程为基于高德地图Android SDK进行封装，实现了Marker碰撞时标题位置自动适配和隐藏的功能
 ## 前述 ##
 - [高德官网申请Key](http://lbs.amap.com/dev/#/).
 - 阅读[参考手册](http://a.amap.com/lbs/static/unzip/Android_Map_Doc/index.html).
